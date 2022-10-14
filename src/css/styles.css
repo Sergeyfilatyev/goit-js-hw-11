@@ -11,3 +11,49 @@ body {
   color: #212121;
   line-height: 1.5;
 }
+button {
+  display: block;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(228, 216, 201);
+  cursor: pointer;
+}
+#search-form {
+  display: flex;
+  width: 100%;
+  padding: 5px 0;
+  justify-content: center;
+  background-color: rgb(21, 65, 38);
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.photo-img {
+  display: block;
+}
+.info {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.load-more.hidden {
+  display: none;
+}
+.load-more {
+  margin-left: auto;
+  margin-right: auto;
+}
