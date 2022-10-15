@@ -37,6 +37,14 @@ async function onSearch() {
   if (refs.gallery.innerHTML) {
     refs.loadMore.classList.remove('hidden');
   }
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
 }
 
 async function onLoadMore() {
