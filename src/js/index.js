@@ -55,9 +55,7 @@ async function onLoadMore() {
   currentPage = newApiService.page;
   if (currentPage >= pageAmount) {
     refs.loading.classList.remove('show');
-    Notify.success(
-      "We're sorry, but you've reached the end of search results."
-    );
+    Notify.info("We're sorry, but you've reached the end of search results.");
   }
 
   simpleLightbox.refresh();
