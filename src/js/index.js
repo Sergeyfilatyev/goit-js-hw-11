@@ -69,6 +69,6 @@ function onLoadingScroll() {
     currentPage < pageAmount
   ) {
     refs.loading.classList.add('show');
-    setTimeout(onLoadMore, 600);
+    setTimeout(onLoadMore, 500);
   }
 }
