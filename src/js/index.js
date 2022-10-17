@@ -64,7 +64,7 @@ async function onLoadMore() {
 function onLoadingScroll() {
   const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
   if (
-    clientHeight + scrollTop >= scrollHeight - 5 &&
+    clientHeight + scrollTop >= scrollHeight &&
     window.scrollY > 400 &&
     currentPage < pageAmount
   ) {
