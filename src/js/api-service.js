@@ -1,5 +1,5 @@
 import axios from 'axios';
-import createMarkup from './markup';
+
 const API_KEY = '29648653-4a0943b69a497c54fdb933d14';
 const API_URL = 'https://pixabay.com/api/';
 
@@ -14,7 +14,7 @@ export default class NewApiService {
     );
 
     const pictures = dataPictures.data.hits;
-    createMarkup(pictures);
+
     return dataPictures;
   }
   incrementPage() {

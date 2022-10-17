@@ -7,6 +7,7 @@ import NewApiService from './api-service';
 import smoothScroll from './smoothScroll';
 import throttle from 'lodash.throttle';
 import scrollTop from './scrollTop';
+import createMarkup from './markup';
 
 refs.searchForm.addEventListener('submit', onSearch);
 document.addEventListener('scroll', throttle(onLoadingScroll, 500));
@@ -21,7 +22,7 @@ function onSearch(event) {
   newApiService.resetPage();
   refs.gallery.innerHTML = '';
   event.preventDefault();
-  newApiService.searchQuery = refs.input.value;
+  newApiService.searchQuery = refs.input.value.trim();
   if (!newApiService.searchQuery) {
     return Notify.info(
       'The input field must not be empty. Please enter something.'
@@ -34,6 +35,7 @@ function onSearch(event) {
     const totalPictures = dataPictures.data.totalHits;
     pageAmount = dataPictures.data.totalHits / 40;
     currentPage = newApiService.page;
+    createMarkup(pictures);
     if (pictures.length === 0) {
       Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
@@ -49,10 +51,12 @@ function onSearch(event) {
 async function onLoadMore() {
   newApiService.incrementPage();
   const dataPictures = await newApiService.fetchPictures();
+  const pictures = dataPictures.data.hits;
   refs.loading.classList.remove('show');
-  smoothScroll();
   pageAmount = dataPictures.data.totalHits / 40;
   currentPage = newApiService.page;
+  createMarkup(pictures);
+  smoothScroll();
   if (currentPage >= pageAmount) {
     refs.loading.classList.remove('show');
     Notify.info("We're sorry, but you've reached the end of search results.");
