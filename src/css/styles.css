@@ -1,6 +1,16 @@
 * {
   box-sizing: border-box;
 }
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -11,12 +21,19 @@ body {
   color: #212121;
   line-height: 1.5;
 }
-button {
+.search {
   display: block;
   border-radius: 5px;
+  border: 2px solid #212121;
   padding: 5px;
-  background-color: rgb(228, 216, 201);
   cursor: pointer;
+  background-color: rgb(26, 175, 64);
+  color: #fafafa;
+}
+input {
+  border-radius: 5px;
+  border: 2px solid #212121;
+  margin-right: 2px;
 }
 #search-form {
   display: flex;
@@ -26,21 +43,27 @@ button {
   width: 100%;
   padding: 7px 0;
   justify-content: center;
-  background-color: rgb(21, 65, 38);
+  background-color: #b2e7b2;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 .gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 55px;
+  margin-bottom: 70px;
   gap: 10px;
 }
-a {
+.gallery-link {
   text-decoration: none;
   color: inherit;
+  background-color: #ebf5eb;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
-.photo-img {
+.gallery-img {
   display: block;
 }
 .info {
@@ -53,10 +76,58 @@ a {
   flex-direction: column;
   align-items: center;
 }
-.load-more.hidden {
-  display: none;
+
+.loading {
+  opacity: 0;
+  display: flex;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 250ms linear;
 }
-.load-more {
-  margin-left: auto;
-  margin-right: auto;
+.loading.show {
+  opacity: 1;
+}
+.ball {
+  background-color: #4da74d;
+  border-radius: 50%;
+  margin: 5px;
+  height: 12px;
+  width: 12px;
+  animation: jump 500ms linear infinite;
+}
+.ball:nth-of-type(2) {
+  animation-delay: 100ms;
+}
+
+.ball:nth-of-type(3) {
+  animation-delay: 200ms;
+}
+.scroll-top {
+  position: relative;
+}
+
+.btn-position {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+}
+
+.btn-style {
+  background-color: #4da74d;
+  border: 2px solid #212121;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 250ms linear;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-hidden {
+  display: none;
 }
